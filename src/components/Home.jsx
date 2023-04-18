@@ -4,32 +4,35 @@ import Main from "./Main";
 import Rightside from "./Rightside";
 
 const Home = (props) => {
-    return (
-        <Container>
-            <Section>
-                <h5>
-                    <a>Hiring in a hurry?</a>
-                </h5>
-                <p>Find Talented Pros in record time with Upwork and keep business moving.</p>
-            </Section>
-            <LayOut>
-               <Leftside />
-               <Main />
-               <Rightside />
-            </LayOut>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <Section>
+        <h5>
+          <a>Hiring in a hurry?</a>
+        </h5>
+        <p>
+          Find Talented Pros in record time with Upwork and keep business
+          moving.
+        </p>
+      </Section>
+      <LayOut>
+        <Leftside />
+        <Main />
+        <Rightside />
+      </LayOut>
+    </Container>
+  );
+};
 
 const Container = styled.div`
-    padding-top: 10px;
-    max-width: 100%;
-`
+  padding-top: 10px;
+  max-width: 100%;
+`;
 const Content = styled.div`
-    max-width: 1128px;
-    margin-left: auto;
-    margin-right: auto;
-`
+  max-width: 1128px;
+  margin-left: auto;
+  margin-right: auto;
+`;
 const Section = styled.section`
     min-height: 50px;
     padding: 16px 0;
@@ -57,23 +60,21 @@ const Section = styled.section`
         flex-direction: column;
         padding: 0 5px;
       }
-`
+`;
 
 const LayOut = styled.div`
-      display: grid;
-      grid-template-areas: "leftside main rightside";
-      grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(300px, 7fr);
-      column-gap: 25px;
-      row-gap: 25px;
-    //   grid-template-rows: auto;
-      margin: 25px 0;
-      @media (max-width: 768px) {
-        display: flex;
-        flex-direction: column;
-        padding: 0 5px;
-      }
-
-`
-
+  display: grid;
+  grid-template-areas: "leftside main rightside";
+  grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(300px, 7fr);
+  column-gap: 25px;
+  row-gap: 25px;
+  //   grid-template-rows: auto;
+  margin: 25px 0;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+  }
+`;
 
 export default Home;
