@@ -49,10 +49,10 @@ const Nav = styled.nav`
   & > a {
     width: 135px;
     height: 34px;
-    media {
+    @media (min-width: 768px) {
       max-width: 768px;
     }
-     {
+    span {
       padding: 0 5px;
     }
   }

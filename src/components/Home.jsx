@@ -2,10 +2,13 @@ import styled from "styled-components";
 import Leftside from "./Leftside";
 import Main from "./Main";
 import Rightside from "./Rightside";
+import { Navigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Home = (props) => {
   return (
     <Container>
+      {!props.user && <Navigate to="/" />}
       <Section>
         <h5>
           <a>Hiring in a hurry?</a>
@@ -34,32 +37,32 @@ const Content = styled.div`
   margin-right: auto;
 `;
 const Section = styled.section`
-    min-height: 50px;
-    padding: 16px 0;
-    box-sizing: content-box;
-    text-align: center;
-    text-decoration: underline;
-    display: flex;
+  min-height: 50px;
+  padding: 16px 0;
+  box-sizing: content-box;
+  text-align: center;
+  text-decoration: underline;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 2;
+  h5 {
+    color: #0a66c2;
+    font-size: 14px;
+    a {
+      font-weight: 700;
+    }
+  }
+  p {
+    font-size: 14px;
+    color: #434649;
+    font-weight: 600;
+  }
+  @media (max-width: 768px) {
     flex-direction: column;
-    justify-content: center
-    align-items: center;
-    line-height: 2;
-    h5 {
-        color: #0a66c2;
-        font-size: 14px;
-        a {
-          font-weight: 700;
-        }
-      }
-      p {
-        font-size: 14px;
-        color: #434649;
-        font-weight: 600;
-      }
-      @media (max-width: 768px) {
-        flex-direction: column;
-        padding: 0 5px;
-      }
+    padding: 0 5px;
+  }
 `;
 
 const LayOut = styled.div`
@@ -77,4 +80,10 @@ const LayOut = styled.div`
   }
 `;
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(Home);

@@ -66,7 +66,7 @@ const Header = (props) => {
                 </span>
               </a>
 
-              <SignOut>
+              <SignOut onClick={() => props.signOut()}>
                 <a href="#">Sign Out </a>
               </SignOut>
             </User>
@@ -271,6 +271,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => dispatch(signOutAPI()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
