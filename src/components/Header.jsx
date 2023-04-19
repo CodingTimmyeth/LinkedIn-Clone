@@ -88,10 +88,10 @@ const Header = (props) => {
 };
 
 const Container = styled.div`
-  background-color: #ece5e5;
+  background-color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   left: 0;
-  padding: 0 24px;
+  padding: 0.25rem 24px;
   position: relative;
   top: 0;
   width: 100vw;

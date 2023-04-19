@@ -2,8 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
 import { connect } from "react-redux";
-import firebase from "../firebase";
+// import firebase from "../firebase";
 import { postArticleAPI } from "../actions";
+import { serverTimestamp } from "firebase/firestore";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
@@ -32,7 +33,6 @@ const PostModal = (props) => {
     console.log("post malone");
     e.preventDefault();
     if (e.target !== e.currentTarget) {
-      console.log("hello");
       return;
     }
 
@@ -41,7 +41,7 @@ const PostModal = (props) => {
       video: videoLink,
       user: props.user,
       description: editorText,
-      timestamp: firebase.firestore.Timestamp.now(),
+      timestamp: serverTimestamp(),
     };
 
     props.postArticle(payload);
@@ -298,6 +298,8 @@ const UploadImage = styled.div`
   text-align: center;
   img {
     width: 100%;
+    height: 500px;
+    object-fit: contain;
   }
 `;
 const mapStateToProps = (state) => {
@@ -307,7 +309,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  postArticleAPI: (payload) => dispatch(postArticleAPI(payload)),
+  postArticle: (payload) => dispatch(postArticleAPI(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
